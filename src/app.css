@@ -1,0 +1,13 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@font-face {
+	font-family: 'Public Pixel';
+	src: url('/fonts/Public-Pixel.ttf');
+}
+
+:root [data-theme='modern'] {
+	--theme-font-family-base: 'Public Pixel', sans-serif;
+	--theme-font-family-heading: 'Public Pixel', sans-serif;
+}
