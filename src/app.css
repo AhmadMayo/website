@@ -7,7 +7,17 @@
 	src: url('/fonts/Public-Pixel.ttf');
 }
 
+:root {
+	color-scheme: light dark;
+}
+
 :root [data-theme='modern'] {
 	--theme-font-family-base: 'Public Pixel', sans-serif;
 	--theme-font-family-heading: 'Public Pixel', sans-serif;
+}
+
+body {
+	background-image: none !important;
+	background: none !important;
+	background-color: initial !important;
 }
