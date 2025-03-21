@@ -9,7 +9,12 @@ export default tseslint.config(
 	...tseslint.configs.recommended,
 	...svelte.configs['flat/recommended'],
 	...svelte.configs['flat/prettier'],
-	prettier,
+	{
+		...prettier,
+		rules: {
+			'prettier/prettier': 'warn',
+		},
+	},
 	{
 		languageOptions: {
 			globals: {

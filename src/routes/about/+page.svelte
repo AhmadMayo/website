@@ -10,8 +10,8 @@
 	let selected = $state<null | number>(null);
 
 	const allRoutes = [
-		{ label: 'About Me', url: '/about' },
 		{ label: 'Experience', url: '/experience' },
+		{ label: 'Skills', url: '/skills' },
 	];
 </script>
 
@@ -21,6 +21,7 @@
 			if (selected != null) {
 				return;
 			}
+
 			event.preventDefault();
 			selected = selectionIndex;
 			return;
@@ -40,31 +41,38 @@
 
 		if (event.key == 'ArrowRight') {
 			event.preventDefault();
-			goto('/about');
+			goto('/experience');
 			return;
 		}
 
 		if (event.key == 'ArrowLeft') {
 			event.preventDefault();
-			goto('/experience');
+			goto('/skills');
 			return;
 		}
 	}}
 />
-
-<h1 class="text-center text-lg font-bold">Skills</h1>
-<ul class="grid list-disc grid-cols-2 ps-4">
-	<li>Javascript (9 years)</li>
-	<li>Typescript (6 years)</li>
-	<li>React (7 years)</li>
-	<li>Svelte (1 year)</li>
-	<li>NodeJS (6 years)</li>
-	<li>Go (2 years)</li>
-	<li>SQL (5 years)</li>
-	<li>PostgreSQL (5 years)</li>
-	<li>MongoDB (2 years)</li>
-	<li>Docker (5 years)</li>
-</ul>
+<h1 class="text-center text-lg font-bold">About me</h1>
+<div>
+	<img src="/my-picture.jpg" alt="Ahmed Abdel-Aziz" class="float-end w-36 lg:w-60" />
+	Hi there, I'm Ahmed Abdel-Aziz, but you can call me Mayo. I've been working mainly as a front-end developer
+	since 2015. I loved JS since I learned it, and although I learned and loved other technologies, I still
+	consider my self as a front end engineer.
+	<br />
+	<br />
+	I love how the front end is the middle space between engineering and creativity, and I spare no effort
+	to produce the most appealing UI with the best performance.
+	<br />
+	<br />
+	Mainly my experience is in building highly interactive and real time web applications, and my main
+	tech stack is Typescript, React, NodeJS, Go, PostgreSQL, and Docker. You can find more about my experience
+	<a class="btn btn-sm preset-filled-secondary-500" href="/experience">here</a>
+	and about my skills <a class="btn btn-sm preset-filled-secondary-500" href="/skills">here</a>.
+	<br />
+	<br />
+	Thanks for visiting my website.
+	<br />
+</div>
 <hr />
 <nav>
 	<h2 class="mb-2">Other Pages</h2>

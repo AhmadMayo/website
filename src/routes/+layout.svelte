@@ -1,98 +1,132 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import duration from 'dayjs/plugin/duration';
+	import relativeTime from 'dayjs/plugin/relativeTime';
+	import dayjs from 'dayjs';
+	import autoAnimate from '@formkit/auto-animate';
+
 	import '../app.css';
+
+	dayjs.extend(duration);
+	dayjs.extend(relativeTime);
 
 	const { children } = $props();
 
-	const allRoutes = ['/', '/experience', '/skills'];
-	const routesRelations = allRoutes.reduce(
-		(acc, route, index, originalArray) => {
-			const next = originalArray[(index + 1) % originalArray.length];
-			const previous = originalArray[(originalArray.length + index - 1) % originalArray.length];
-			acc[route] = { next, previous };
-
-			return acc;
-		},
-		{} as Record<string, { next: string; previous: string }>,
-	);
+	if (typeof window != 'undefined') {
+		console.log(`
+	|-----------------------------------------------------|
+	| What are you doing here? Are you checking the code? |
+	| Hmph. Fiiine. Here's the link.                      |
+	| https://github.com/AhmadMayo/website                |
+	| And stop looking under people's console's. Pervert. |
+	|-----------------------------------------------------|
+	`);
+	}
 </script>
 
-<div class="flex grow flex-col px-4 pb-10 pt-24">
-	<nav class=""></nav>
-	<main
+<div class="itenms-center flex h-screen grow flex-col px-4 py-24">
+	<div
 		data-theme="modern"
 		class="
 			console
-			grid grow
-			grid-cols-1 grid-rows-[1fr_8rem]
-			bg-surface-50 p-2 dark:bg-surface-900
+			bg-surface-50
+			dark:bg-surface-900 grid
+			h-0 w-4xl grow
+			grid-cols-1 grid-rows-[1fr_12rem] p-2
 		"
 	>
-		<div class="col-start-1 col-end-2 row-start-1 row-end-2 bg-black p-2">
+		<main
+			use:autoAnimate
+			class="col-start-1 col-end-2 row-start-1 row-end-2 flex flex-col gap-4 overflow-auto bg-black p-2"
+		>
 			{@render children()}
-		</div>
-		<div class="col-start-1 col-end-2 row-start-2 row-end-3 flex items-center justify-around">
+		</main>
+		<footer class="col-start-1 col-end-2 row-start-2 row-end-3 flex items-center justify-around">
 			<!-- Arrows -->
 			<div
 				class="
-					grid h-20 w-20
+					grid h-24 w-24
 					grid-cols-[35%_10%_10%_10%_35%] grid-rows-[35%_10%_10%_10%_35%]
 					text-gray-600
 				"
 			>
 				<!-- Left -->
-				<div class="arrow col-start-1 col-end-3 row-start-2 -row-end-2 transition ease-out">
-					<a
-						href={routesRelations[$page.url.pathname].previous}
+				<div class="button col-start-1 col-end-3 row-start-2 -row-end-2 transition ease-out">
+					<button
 						class="
 							block h-full w-full
 							bg-current
 							[clip-path:polygon(0%_0%,65%_0%,100%_50%,65%_100%,0%_100%)]
 						"
-						title="Previous Page"
+						aria-label="Left Arrorw"
+						onclick={() => {
+							window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
+						}}
 					>
-						l
-					</a>
+					</button>
 				</div>
 				<!-- Up -->
-				<div class="arrow col-start-2 -col-end-2 row-start-1 row-end-3 transition ease-out">
+				<div class="button col-start-2 -col-end-2 row-start-1 row-end-3 transition ease-out">
 					<button
 						class="
 							h-full w-full
 							bg-current
 							[clip-path:polygon(0%_0%,100%_0%,100%_65%,50%_100%,0%_65%)]
 						"
+						aria-label="Arrow Up"
+						onmousedown={() => {
+							window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp' }));
+						}}
 					>
-						l
 					</button>
 				</div>
 				<!-- Right -->
-				<div class="arrow -col-start-3 -col-end-1 row-start-2 -row-end-2 transition ease-out">
-					<a
-						href={routesRelations[$page.url.pathname].next}
+				<div class="button -col-start-3 -col-end-1 row-start-2 -row-end-2 transition ease-out">
+					<button
 						class="
 							block h-full w-full
 							bg-current
 							[clip-path:polygon(0%_50%,35%_0%,100%_0%,100%_100%,35%_100%)]
 						"
-					>
-						l
-					</a>
+						aria-label="Arrow Right"
+						onclick={() => {
+							window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
+						}}
+					></button>
 				</div>
 				<!-- Down -->
-				<div class="arrow col-start-2 -col-end-2 -row-start-3 -row-end-1 transition ease-out">
+				<div class="button col-start-2 -col-end-2 -row-start-3 -row-end-1 transition ease-out">
 					<button
 						class="
 							h-full w-full
 							bg-current
 							[clip-path:polygon(0%_35%,50%_0%,100%_35%,100%_100%,0%_100%)]
 						"
-					>
-						l
-					</button>
+						aria-label="Arrow Down"
+						onmousedown={() => {
+							window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+						}}
+					></button>
 				</div>
 			</div>
-			<div></div>
+			<nav class="flex flex-col gap-4 lg:flex-row lg:gap-12">
+				{#snippet internalLinkButton({
+					href,
+					label,
+					ariaLabel,
+				}: {
+					href: string;
+					label: string;
+					ariaLabel: string;
+				})}
+					<div class="flex items-center gap-4 lg:flex-col">
+						<a class="button block h-4 w-8 bg-gray-600" {href} aria-label={ariaLabel}></a>
+						<span class="text-xs">{label}</span>
+					</div>
+				{/snippet}
+				{@render internalLinkButton({ href: '/about', label: 'A', ariaLabel: 'About' })}
+				{@render internalLinkButton({ href: '/experience', label: 'E', ariaLabel: 'Experience' })}
+				{@render internalLinkButton({ href: '/skills', label: 'S', ariaLabel: 'Skills' })}
+			</nav>
 			<div class="grid h-20 w-20 grid-cols-[45%_5%_5%_45%] grid-rows-[45%_5%_5%_45%]">
 				<a
 					aria-label="github account"
@@ -135,14 +169,18 @@
 					/>
 				</a>
 			</div>
-		</div>
-	</main>
+		</footer>
+	</div>
 </div>
 
 <style lang="postcss">
+	@reference "tailwindcss";
+
 	.console {
-		--outer-border-color: rgba(var(--color-tertiary-900) / 1);
-		--inner-border-color: rgba(var(--color-tertiary-700) / 1);
+		--outer-border-color: var(--color-tertiary-900);
+		--inner-border-color: var(--color-tertiary-700);
+		/* --outer-border-color: rgba(var(--color-tertiary-900) / 1);
+		--inner-border-color: rgba(var(--color-tertiary-700) / 1); */
 		--pixel-size: 0.25rem;
 		--shadow-x: -3px;
 		--shadow-y: 3px;
@@ -189,17 +227,6 @@
 			/*
 				Inset shadow
 			*/ var(--shadow-x) var(--shadow-y) 0 #000000 inset;
-	}
-
-	.arrow {
-		--shadow-x: -3px;
-		--shadow-y: 3px;
-
-		filter: drop-shadow(var(--shadow-x) var(--shadow-y) 0 #000000);
-	}
-	.arrow:active {
-		--shadow-x: -1.5px;
-		--shadow-y: 1.5px;
 	}
 
 	.button {

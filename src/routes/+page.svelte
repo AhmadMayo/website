@@ -1,2 +1,92 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import { goto } from '$app/navigation';
+
+	let selectionIndex = $state(0);
+	let selected = $state<null | number>(null);
+
+	const allRoutes = [
+		{ label: 'About Me', url: '/about' },
+		{ label: 'Experience', url: '/experience' },
+		{ label: 'Skills', url: '/skills' },
+	];
+</script>
+
+<svelte:window
+	onkeydown={(event) => {
+		if (event.key == 'Enter') {
+			selected = selectionIndex;
+		}
+
+		if (selected != null) {
+			return;
+		}
+		if (event.key == 'ArrowUp') {
+			selectionIndex = (allRoutes.length + selectionIndex - 1) % allRoutes.length;
+			return;
+		}
+
+		if (event.key == 'ArrowDown') {
+			selectionIndex = (selectionIndex + 1) % allRoutes.length;
+			return;
+		}
+	}}
+/>
+
+<div class="grid h-full w-full place-items-center" role="menu">
+	<div class="flex flex-col">
+		<h1 class="mb-4">Please Select</h1>
+		{#each allRoutes as { label, url }, index}
+			<div class="flex items-center gap-2">
+				<span class="selection-arrow {selectionIndex == index ? 'opacity-100' : 'opacity-0'}"
+				></span>
+				<a
+					class={selected == index ? 'selected' : ''}
+					role="menuitem"
+					href={url}
+					onanimationend={() => {
+						goto(url);
+					}}>{label}</a
+				>
+			</div>
+		{/each}
+		<div class="mt-16 max-w-xl">P.S. Use the keyboard buttons, or the console's buttons.</div>
+	</div>
+</div>
+
+<style lang="postcss">
+	.selection-arrow {
+		position: relative;
+		display: block;
+		height: 1rem;
+		width: 1rem;
+	}
+	.selection-arrow:before {
+		--size: 3px;
+		--color: white;
+		content: '';
+		position: absolute;
+		width: var(--size);
+		height: var(--size);
+		box-shadow:
+			var(--size) var(--size) 0 0 var(--color),
+			calc(var(--size) * 2) calc(var(--size) * 2) 0 0 var(--color),
+			var(--size) calc(var(--size) * 3) 0 0 var(--color);
+	}
+
+	.selected {
+		animation: selection 0.5s 2 linear;
+	}
+	@keyframes selection {
+		0% {
+			opacity: 1;
+		}
+
+		50% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
+		}
+	}
+</style>
