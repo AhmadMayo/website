@@ -70,7 +70,7 @@
 	<h2 class="mb-2">Other Pages</h2>
 	<ul bind:this={linksParentEl}>
 		{#each allRoutes as { label, url }, index}
-			<div class="flex items-center gap-2">
+			<li class="flex items-center gap-2">
 				<span class="selection-arrow {selectionIndex == index ? 'opacity-100' : 'opacity-0'}"
 				></span>
 				<a
@@ -79,9 +79,14 @@
 					href={url}
 					onanimationend={() => {
 						goto(url);
-					}}>{label}</a
+					}}
+					onfocus={() => {
+						selectionIndex = index;
+					}}
 				>
-			</div>
+					{label}
+				</a>
+			</li>
 		{/each}
 	</ul>
 </nav>

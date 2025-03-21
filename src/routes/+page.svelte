@@ -2,6 +2,11 @@
 	import { goto } from '$app/navigation';
 
 	let selectionIndex = $state(0);
+	let linksParentEl: HTMLUListElement;
+	$effect(() => {
+		linksParentEl.children[selectionIndex].querySelector('a')?.focus();
+	});
+
 	let selected = $state<null | number>(null);
 
 	const allRoutes = [
@@ -35,20 +40,29 @@
 <div class="grid h-full w-full place-items-center" role="menu">
 	<div class="flex flex-col">
 		<h1 class="mb-4">Please Select</h1>
-		{#each allRoutes as { label, url }, index}
-			<div class="flex items-center gap-2">
-				<span class="selection-arrow {selectionIndex == index ? 'opacity-100' : 'opacity-0'}"
-				></span>
-				<a
-					class={selected == index ? 'selected' : ''}
-					role="menuitem"
-					href={url}
-					onanimationend={() => {
-						goto(url);
-					}}>{label}</a
-				>
-			</div>
-		{/each}
+		<nav>
+			<ul bind:this={linksParentEl}>
+				{#each allRoutes as { label, url }, index}
+					<li class="flex items-center gap-2">
+						<span class="selection-arrow {selectionIndex == index ? 'opacity-100' : 'opacity-0'}"
+						></span>
+						<a
+							class={selected == index ? 'selected' : ''}
+							role="menuitem"
+							href={url}
+							onfocus={() => {
+								selectionIndex = index;
+							}}
+							onanimationend={() => {
+								goto(url);
+							}}
+						>
+							{label}
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</nav>
 		<div class="mt-16 max-w-xl">P.S. Use the keyboard buttons, or the console's buttons.</div>
 	</div>
 </div>
