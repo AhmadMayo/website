@@ -38,6 +38,7 @@
 }
 
 :root {
+	--base-font-size: 14px;
 	color-scheme: light dark;
 	scrollbar-color: var(--color-tertiary-300-700) var(--color-tertiary-100-900);
 }
