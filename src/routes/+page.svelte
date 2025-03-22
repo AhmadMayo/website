@@ -17,7 +17,7 @@
 </script>
 
 <svelte:head>
-	<title>Ahmed Abdel-Aziz's | Principal Front-End Engineer</title>
+	<title>Ahmed Abdel-Aziz | Principal Front-End Engineer</title>
 	<meta
 		name="description"
 		content="Principal Frontend Engineer | Javascript Guru | CSS & a11y Passionate"
