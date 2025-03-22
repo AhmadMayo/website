@@ -5,6 +5,7 @@
 	import autoAnimate from '@formkit/auto-animate';
 
 	import '../app.css';
+	import { afterNavigate } from '$app/navigation';
 
 	dayjs.extend(duration);
 	dayjs.extend(relativeTime);
@@ -21,6 +22,13 @@
 	|-----------------------------------------------------|
 	`);
 	}
+
+	let contentContainer: HTMLElement;
+	afterNavigate(() => {
+		setTimeout(() => {
+			contentContainer.scrollTo({ top: 0, behavior: 'smooth' });
+		}, 100);
+	});
 </script>
 
 <div class="flex h-screen w-full grow items-stretch justify-center px-8 py-24">
@@ -35,7 +43,8 @@
 		"
 	>
 		<main
-			use:autoAnimate
+			bind:this={contentContainer}
+			use:autoAnimate={{}}
 			class="col-start-1 col-end-2 row-start-1 row-end-2 flex flex-col gap-4 overflow-auto bg-black p-2"
 		>
 			{@render children()}
@@ -59,7 +68,7 @@
 						"
 						aria-label="Left Arrorw"
 						onclick={() => {
-							window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
+							window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft' }));
 						}}
 					>
 					</button>
