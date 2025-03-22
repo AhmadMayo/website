@@ -20,7 +20,7 @@
 	<title>Ahmed Abdel-Aziz's | Principal Front-End Engineer</title>
 	<meta
 		name="description"
-		content="Ahmed Principal Frontend Engineer | Javascript Guru | CSS & a11y Passionate"
+		content="Principal Frontend Engineer | Javascript Guru | CSS & a11y Passionate"
 	/>
 </svelte:head>
 
