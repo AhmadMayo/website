@@ -37,7 +37,7 @@
 	}}
 />
 
-<div class="grid h-full w-full place-items-center" role="menu">
+<div class="grid h-full w-full place-items-center">
 	<div class="flex flex-col">
 		<h1 class="mb-4">Please Select</h1>
 		<nav>
@@ -48,7 +48,6 @@
 						></span>
 						<a
 							class={selected == index ? 'selected' : ''}
-							role="menuitem"
 							href={url}
 							onfocus={() => {
 								selectionIndex = index;
