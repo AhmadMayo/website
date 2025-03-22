@@ -53,7 +53,7 @@
 />
 
 <h1 class="text-center text-lg font-bold">Skills</h1>
-<ul class="grid list-disc grid-cols-2 ps-4">
+<ul class="grid list-disc grid-cols-1 ps-4 sm:grid-cols-1">
 	<li>Javascript (9 years)</li>
 	<li>Typescript (6 years)</li>
 	<li>React (7 years)</li>
