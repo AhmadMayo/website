@@ -74,7 +74,11 @@
 				<span class="selection-arrow {selectionIndex == index ? 'opacity-100' : 'opacity-0'}"
 				></span>
 				<a
-					class="focus:text-primary-500 focus:outline-none {selected == index ? 'selected' : ''}"
+					class="
+						focus:outline-none
+						{selectionIndex == index ? 'text-primary-500' : ''}
+						{selected == index ? 'selected' : ''}
+					"
 					role="menuitem"
 					href={url}
 					onanimationend={() => {
