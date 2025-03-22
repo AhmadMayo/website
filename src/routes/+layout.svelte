@@ -39,7 +39,7 @@
 			bg-surface-50
 			dark:bg-surface-900 grid
 			max-w-4xl grow basis-0
-			grid-cols-1 grid-rows-[1fr_12rem] p-2
+			grid-cols-1 grid-rows-[1fr_8rem] p-2 md:grid-rows-[1fr_12rem]
 		"
 	>
 		<main
