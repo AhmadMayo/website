@@ -16,15 +16,26 @@
 	];
 </script>
 
+<svelte:head>
+	<title>Ahmed Abdel-Aziz's | Principal Front-End Engineer</title>
+	<meta
+		name="description"
+		content="Ahmed Principal Frontend Engineer | Javascript Guru | CSS & a11y Passionate"
+	/>
+</svelte:head>
+
 <svelte:window
 	onkeydown={(event) => {
 		if (event.key == 'Enter') {
-			selected = selectionIndex;
-		}
+			if (selected != null) {
+				return;
+			}
 
-		if (selected != null) {
+			event.preventDefault();
+			selected = selectionIndex;
 			return;
 		}
+
 		if (event.key == 'ArrowUp') {
 			selectionIndex = (allRoutes.length + selectionIndex - 1) % allRoutes.length;
 			return;
