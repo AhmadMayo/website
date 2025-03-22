@@ -2,13 +2,43 @@
 	import { goto } from '$app/navigation';
 	import dayjs from 'dayjs';
 	import experience, { type Position } from './experience';
+
+	let titleEl: HTMLElement;
 </script>
 
 <svelte:window
 	onkeydown={(event) => {
-		if (event.key == 'ArrowRight') {
+		if (event.key == 'ArrowUp') {
+			const scrollableEl = titleEl.parentElement;
+			if (!scrollableEl) {
+				return;
+			}
+
 			event.preventDefault();
-			goto('/skills');
+			titleEl.parentElement?.scrollTo({
+				top: scrollableEl.scrollTop - 250,
+				behavior: 'smooth',
+			});
+			return;
+		}
+
+		if (event.key == 'ArrowDown') {
+			const scrollableEl = titleEl.parentElement;
+			if (!scrollableEl) {
+				return;
+			}
+
+			event.preventDefault();
+			titleEl.parentElement?.scrollTo({
+				top: scrollableEl.scrollTop + 250,
+				behavior: 'smooth',
+			});
+			return;
+		}
+
+		if (event.key == 'ArrowLeft') {
+			event.preventDefault();
+			goto('/about');
 			return;
 		}
 
@@ -20,7 +50,7 @@
 	}}
 />
 
-<h1 class="text-center text-lg font-bold">Experience</h1>
+<h1 bind:this={titleEl} class="text-center text-lg font-bold">Experience</h1>
 {#each experience as position, index}
 	{@render renderPosition(position)}
 	{#if index != experience.length - 1}

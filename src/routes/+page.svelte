@@ -37,11 +37,13 @@
 		}
 
 		if (event.key == 'ArrowUp') {
+			event.preventDefault();
 			selectionIndex = (allRoutes.length + selectionIndex - 1) % allRoutes.length;
 			return;
 		}
 
 		if (event.key == 'ArrowDown') {
+			event.preventDefault();
 			selectionIndex = (selectionIndex + 1) % allRoutes.length;
 			return;
 		}
