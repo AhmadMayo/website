@@ -82,7 +82,7 @@
 				<span class="selection-arrow {selectionIndex == index ? 'opacity-100' : 'opacity-0'}"
 				></span>
 				<a
-					class={selected == index ? 'selected' : ''}
+					class="focus:text-primary-500 focus:outline-none {selected == index ? 'selected' : ''}"
 					role="menuitem"
 					href={url}
 					onanimationend={() => {
@@ -108,7 +108,7 @@
 	}
 	.selection-arrow:before {
 		--size: 3px;
-		--color: white;
+		--color: var(--color-primary-500);
 		content: '';
 		position: absolute;
 		width: var(--size);
