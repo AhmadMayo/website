@@ -23,14 +23,14 @@
 	}
 </script>
 
-<div class="itenms-center flex h-screen grow flex-col px-4 py-24">
+<div class="flex h-screen w-full grow items-stretch justify-center px-8 py-24">
 	<div
 		data-theme="modern"
 		class="
 			console
 			bg-surface-50
 			dark:bg-surface-900 grid
-			h-0 w-4xl grow
+			max-w-4xl grow basis-0
 			grid-cols-1 grid-rows-[1fr_12rem] p-2
 		"
 	>
@@ -108,7 +108,7 @@
 					></button>
 				</div>
 			</div>
-			<nav class="flex flex-col gap-4 lg:flex-row lg:gap-12">
+			<nav class="flex flex-col gap-4 sm:flex-row lg:gap-12">
 				{#snippet internalLinkButton({
 					href,
 					label,
