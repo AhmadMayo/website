@@ -5,7 +5,7 @@
 	import autoAnimate from '@formkit/auto-animate';
 
 	import '../app.css';
-	import { afterNavigate } from '$app/navigation';
+	import { afterNavigate, goto } from '$app/navigation';
 
 	dayjs.extend(duration);
 	dayjs.extend(relativeTime);
@@ -30,6 +30,34 @@
 		}, 100);
 	});
 </script>
+
+<svelte:window
+	onkeydown={(event) => {
+		if (event.ctrlKey || event.shiftKey || event.altKey) {
+			return;
+		}
+
+		if (event.key == 'Backspace') {
+			// goto(-1);
+			window.history.back();
+			return;
+		}
+		if (event.key == 'a') {
+			goto('/about');
+			return;
+		}
+
+		if (event.key == 'e') {
+			goto('/experience');
+			return;
+		}
+
+		if (event.key == 's') {
+			goto('/skills');
+			return;
+		}
+	}}
+/>
 
 <div class="flex h-dvh w-full grow items-stretch justify-center px-8 py-24">
 	<div
