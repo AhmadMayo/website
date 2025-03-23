@@ -29,16 +29,18 @@
 }
 
 @theme {
-	--font-pixel: "Public Pixel", "sans-serif";
+	--font-pixel: "Silk Screen", "sans-serif";
 }
 
 @font-face {
-	font-family: 'Public Pixel';
-	src: url('/fonts/Public-Pixel.ttf');
+	font-family: 'Silk Screen';
+	src: url('/fonts/Silk-Screen.ttf');
 }
 
 :root {
-	--base-font-size: 14px;
+	--base-font-size: 16px;
+	font-smooth: never;
+	-webkit-font-smoothing: none;
 	color-scheme: light dark;
 	scrollbar-color: var(--color-tertiary-300-700) var(--color-tertiary-100-900);
 }
