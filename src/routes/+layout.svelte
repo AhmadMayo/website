@@ -38,10 +38,10 @@
 		}
 
 		if (event.key == 'Backspace') {
-			// goto(-1);
 			window.history.back();
 			return;
 		}
+
 		if (event.key == 'a') {
 			goto('/about');
 			return;

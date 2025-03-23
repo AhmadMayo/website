@@ -8,6 +8,12 @@
 
 <svelte:window
 	onkeydown={(event) => {
+		if (event.key == 'ArrowLeft') {
+			event.preventDefault();
+			window.history.back();
+			return;
+		}
+
 		if (event.key == 'ArrowUp') {
 			const scrollableEl = titleEl.parentElement;
 			if (!scrollableEl) {
@@ -33,18 +39,6 @@
 				top: scrollableEl.scrollTop + 250,
 				behavior: 'smooth',
 			});
-			return;
-		}
-
-		if (event.key == 'ArrowLeft') {
-			event.preventDefault();
-			goto('/about');
-			return;
-		}
-
-		if (event.key == 'ArrowRight') {
-			event.preventDefault();
-			goto('/skills');
 			return;
 		}
 	}}

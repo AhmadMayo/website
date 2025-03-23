@@ -17,12 +17,18 @@
 
 <svelte:window
 	onkeydown={(event) => {
-		if (event.key == 'Enter') {
+		if (event.key == 'Enter' || event.key == 'ArrowRight') {
 			if (selected != null) {
 				return;
 			}
 			event.preventDefault();
 			selected = selectionIndex;
+			return;
+		}
+
+		if (event.key == 'ArrowLeft') {
+			event.preventDefault();
+			window.history.back();
 			return;
 		}
 
@@ -35,18 +41,6 @@
 		if (event.key == 'ArrowDown') {
 			event.preventDefault();
 			selectionIndex = (selectionIndex + 1) % allRoutes.length;
-			return;
-		}
-
-		if (event.key == 'ArrowRight') {
-			event.preventDefault();
-			goto('/about');
-			return;
-		}
-
-		if (event.key == 'ArrowLeft') {
-			event.preventDefault();
-			goto('/experience');
 			return;
 		}
 	}}
