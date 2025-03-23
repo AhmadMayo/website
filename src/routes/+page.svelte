@@ -65,7 +65,7 @@
 
 <div class="grid h-full w-full place-items-center">
 	<div class="flex flex-col">
-		<h1 class="mb-4 text-xl font-semibold">Please Select</h1>
+		<h1 class="mb-4 text-2xl font-semibold">Please Select</h1>
 		<nav>
 			<ul bind:this={linksParentEl}>
 				{#each allRoutes as { label, url }, index}

@@ -29,20 +29,21 @@
 }
 
 @theme {
-	--font-pixel: "Silk Screen", "sans-serif";
+	--font-pixel: "VT323", "sans-serif";
 }
 
 @font-face {
-	font-family: 'Silk Screen';
-	src: url('/fonts/Silk-Screen.ttf');
+	font-family: 'VT323';
+	src: url('/fonts/VT323-Regular.ttf');
 }
 
 :root {
-	--base-font-size: 16px;
+	--base-font-size: 20px;
 	font-smooth: never;
 	-webkit-font-smoothing: none;
 	color-scheme: light dark;
 	scrollbar-color: var(--color-tertiary-300-700) var(--color-tertiary-100-900);
+	line-height: 1.25;
 }
 
 body {
