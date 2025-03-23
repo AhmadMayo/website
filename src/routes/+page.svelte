@@ -22,7 +22,10 @@
 		name="description"
 		content="Principal Frontend Engineer | Javascript Guru | CSS & a11y Passionate"
 	/>
-	<meta property="og:title" content="axis | The financial hub for your business." />
+	<meta
+		property="og:title"
+		content="Principal Frontend Engineer | Javascript Guru | CSS & a11y Passionate"
+	/>
 	<meta
 		property="og:description"
 		content="Principal Frontend Engineer | Javascript Guru | CSS & a11y Passionate"
