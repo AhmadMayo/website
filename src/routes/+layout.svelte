@@ -31,7 +31,7 @@
 	});
 </script>
 
-<div class="flex h-screen w-full grow items-stretch justify-center px-8 py-24">
+<div class="flex h-dvh w-full grow items-stretch justify-center px-8 py-24">
 	<div
 		data-theme="modern"
 		class="
