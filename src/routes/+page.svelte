@@ -66,14 +66,16 @@
 		<nav>
 			<ul bind:this={linksParentEl}>
 				{#each allRoutes as { label, url }, index}
-					<li class="flex items-center gap-2">
-						<span class="selection-arrow {selectionIndex == index ? 'opacity-100' : 'opacity-0'}"
-						></span>
+					<li>
 						<a
 							class="
+								relative
 								focus:outline-none
 								{selectionIndex == index ? 'text-primary-500' : ''}
 								{selected == index ? 'selected' : ''}
+								selection-link
+								ps-4
+								{selectionIndex == index ? 'before:opacity-100' : 'before:opacity-0'}
 							"
 							href={url}
 							onfocus={() => {
@@ -94,16 +96,12 @@
 </div>
 
 <style lang="postcss">
-	.selection-arrow {
-		position: relative;
-		display: block;
-		height: 1rem;
-		width: 1rem;
-	}
-	.selection-arrow:before {
+	.selection-link:before {
 		--size: 3px;
 		--color: var(--color-primary-500);
 		content: '';
+		left: 0;
+		top: calc(50% - 0.5rem + 1px);
 		position: absolute;
 		width: var(--size);
 		height: var(--size);
