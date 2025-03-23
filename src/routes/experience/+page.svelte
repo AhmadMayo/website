@@ -42,9 +42,9 @@
 			return;
 		}
 
-		if (event.key == 'ArrowLeft') {
+		if (event.key == 'ArrowRight') {
 			event.preventDefault();
-			goto('/about');
+			goto('/skills');
 			return;
 		}
 	}}
