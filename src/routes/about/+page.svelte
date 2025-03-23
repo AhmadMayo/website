@@ -52,7 +52,7 @@
 		}
 	}}
 />
-<h1 class="text-center text-lg font-bold">About me</h1>
+<h1 class="text-center text-xl font-bold">About me</h1>
 <div>
 	<img src="/my-picture.jpg" alt="Ahmed Abdel-Aziz" class="float-end w-36 lg:w-60" />
 	Hi there, I'm Ahmed Abdel-Aziz, but you can call me Mayo. I've been working mainly as a front-end developer

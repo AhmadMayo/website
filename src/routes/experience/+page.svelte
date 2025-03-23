@@ -50,7 +50,7 @@
 	}}
 />
 
-<h1 bind:this={titleEl} class="text-center text-lg font-bold">Experience</h1>
+<h1 bind:this={titleEl} class="text-center text-xl font-bold">Experience</h1>
 {#each experience as position, index}
 	{@render renderPosition(position)}
 	{#if index != experience.length - 1}
@@ -68,7 +68,7 @@
 	responsibilities,
 }: Position)}
 	<div>
-		<h2 class="font-semibold">
+		<h2 class="text-lg font-semibold">
 			{title}
 		</h2>
 		<div>
