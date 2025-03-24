@@ -4,19 +4,44 @@
 	let selectionIndex = $state(0);
 	let linksParentEl: HTMLUListElement;
 	$effect(() => {
-		linksParentEl.children[selectionIndex]
-			.querySelector('.selection-link')
-			?.focus();
+		const el = linksParentEl.children[selectionIndex].querySelector(
+			'.selection-link',
+		) as HTMLAnchorElement | null;
+		el?.focus();
 	});
 
 	let selected = $state<null | number>(null);
 
 	const allRoutes = [
 		{ label: 'About Me', url: '/about' },
-		{ label: 'Experience', url: '/experience' },
-		{ label: 'Snake', url: '/snake' },
+		{ label: 'My Experience', url: '/experience' },
+		{ label: 'Remember Snake?', url: '/snake' },
 	];
 </script>
+
+<svelte:head>
+	<title>Ahmed Abdel-Aziz | Skills</title>
+	<meta
+		name="description"
+		content="Technologies that I master."
+	/>
+	<meta
+		property="og:title"
+		content="Ahmed Abdel-Aziz | Skills"
+	/>
+	<meta
+		property="og:description"
+		content="Technologies that I master."
+	/>
+	<meta
+		name="twitter:title"
+		content="Ahmed Abdel-Aziz | Skills"
+	/>
+	<meta
+		name="twitter:description"
+		content="Technologies that I master."
+	/>
+</svelte:head>
 
 <svelte:window
 	onkeydown={(event) => {
@@ -50,7 +75,7 @@
 	}}
 />
 
-<h1 class="text-center text-3xl font-bold">Skills</h1>
+<h1 class="text-center text-4xl">My Skills</h1>
 <ul class="grid list-disc grid-cols-1 ps-4 sm:grid-cols-1">
 	<li>Javascript (9 years)</li>
 	<li>Typescript (6 years)</li>

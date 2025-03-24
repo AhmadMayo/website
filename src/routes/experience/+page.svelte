@@ -1,10 +1,33 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import dayjs from 'dayjs';
 	import experience, { type Position } from './experience';
 
 	let titleEl: HTMLElement;
 </script>
+
+<svelte:head>
+	<title>Ahmed Abdel-Aziz | Experience</title>
+	<meta
+		name="description"
+		content="Technical experience since I started."
+	/>
+	<meta
+		property="og:title"
+		content="Ahmed Abdel-Aziz | Experience"
+	/>
+	<meta
+		property="og:description"
+		content="Technical experience since I started."
+	/>
+	<meta
+		name="twitter:title"
+		content="Ahmed Abdel-Aziz | Experience"
+	/>
+	<meta
+		name="twitter:description"
+		content="Technical experience since I started."
+	/>
+</svelte:head>
 
 <svelte:window
 	onkeydown={(event) => {
@@ -46,9 +69,9 @@
 
 <h1
 	bind:this={titleEl}
-	class="text-center text-3xl font-bold"
+	class="text-center text-4xl"
 >
-	Experience
+	My Experience
 </h1>
 {#each experience as position, index}
 	{@render renderPosition(position)}

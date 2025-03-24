@@ -4,19 +4,44 @@
 	let selectionIndex = $state(0);
 	let linksParentEl: HTMLUListElement;
 	$effect(() => {
-		linksParentEl.children[selectionIndex]
-			.querySelector('.selection-link')
-			?.focus();
+		const el = linksParentEl.children[selectionIndex]?.querySelector(
+			'.selection-link',
+		) as HTMLAnchorElement | null;
+		el?.focus();
 	});
 
 	let selected = $state<null | number>(null);
 
 	const allRoutes = [
-		{ label: 'Experience', url: '/experience' },
-		{ label: 'Skills', url: '/skills' },
-		{ label: 'Snake', url: '/snake' },
+		{ label: 'My Experience', url: '/experience' },
+		{ label: 'My Skills', url: '/skills' },
+		{ label: 'Remember Snake?', url: '/snake' },
 	];
 </script>
+
+<svelte:head>
+	<title>Ahmed Abdel-Aziz | About</title>
+	<meta
+		name="description"
+		content="Know more about me."
+	/>
+	<meta
+		property="og:title"
+		content="Ahmed Abdel-Aziz | About"
+	/>
+	<meta
+		property="og:description"
+		content="Know more about me."
+	/>
+	<meta
+		name="twitter:title"
+		content="Ahmed Abdel-Aziz | About"
+	/>
+	<meta
+		name="twitter:description"
+		content="Know more about me."
+	/>
+</svelte:head>
 
 <svelte:window
 	onkeydown={(event) => {
@@ -50,39 +75,33 @@
 		}
 	}}
 />
-<h1 class="text-center text-3xl font-bold">About Me</h1>
+<h1 class="text-center text-4xl">About Me</h1>
 <div>
 	<img
 		src="/my-picture.jpg"
 		alt="Ahmed Abdel-Aziz"
 		class="float-end w-36 lg:w-60"
 	/>
-	Hi there, I'm Ahmed Abdel-Aziz, but you can call me Mayo. I've been working mainly
-	as a front-end developer since 2015. I loved JS since I learned it, and although
-	I learned and loved other technologies, I still consider my self as a front end
-	engineer.
-	<br />
-	<br />
-	I love how the front end is the middle space between engineering and creativity,
-	and I spare no effort to produce the most appealing UI with the best performance.
-	<br />
-	<br />
-	Mainly my experience is in building highly interactive and real time web applications,
-	and my main tech stack is Typescript, React, NodeJS, Go, PostgreSQL, and Docker.
-	You can find more about my experience
+	I'm Ahmed Abdel-Aziz (Aka - Mayo). I began my career in tech in 2015 with a passion
+	for JavaScript, alongside a variety of other technologies. As a Front-end Engineer,
+	I believe that the front-end is where engineering meets creativity; thus I have
+	been dedicated to creating visually appealing UIs that also deliver the best performance
+	from a technical standpoint. My core expertise lies in building highly interactive,
+	real-time web applications, with a tech stack focused on TypeScript, React, NodeJS,
+	Go, PostgreSQL, and Docker. Feel free to explore my
 	<a
-		class="btn btn-sm preset-filled-secondary-500"
-		href="/experience">here</a
+		class="text-secondary-500 underline"
+		href="/experience"
 	>
-	and about my skills
+		experience
+	</a>
+	and
 	<a
-		class="btn btn-sm preset-filled-secondary-500"
-		href="/skills">here</a
-	>.
-	<br />
-	<br />
-	Thanks for visiting my website.
-	<br />
+		class="text-secondary-500 underline"
+		href="/skills"
+	>
+		skills
+	</a>.
 </div>
 <hr />
 <nav>

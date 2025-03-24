@@ -4,18 +4,20 @@
 	let selectionIndex = $state(0);
 	let linksParentEl: HTMLUListElement;
 	$effect(() => {
-		linksParentEl.children[selectionIndex]
-			.querySelector('.selection-link')
-			?.focus();
+		const el = linksParentEl.children[selectionIndex]?.querySelector(
+			'.selection-link',
+		) as HTMLAnchorElement | null;
+
+		el?.focus();
 	});
 
 	let selected = $state<null | number>(null);
 
 	const allRoutes = [
 		{ label: 'About Me', url: '/about' },
-		{ label: 'Experience', url: '/experience' },
-		{ label: 'Skills', url: '/skills' },
-		{ label: 'Snake', url: '/snake' },
+		{ label: 'My Experience', url: '/experience' },
+		{ label: 'My Skills', url: '/skills' },
+		{ label: 'Remember Snake?', url: '/snake' },
 	];
 </script>
 
@@ -27,7 +29,7 @@
 	/>
 	<meta
 		property="og:title"
-		content="Principal Frontend Engineer | Javascript Guru | CSS & a11y Passionate"
+		content="Ahmed Abdel-Aziz | Principal Front-End Engineer"
 	/>
 	<meta
 		property="og:description"
@@ -72,7 +74,7 @@
 
 <div class="grid h-full w-full place-items-center">
 	<div class="flex flex-col">
-		<h1 class="mb-4 text-2xl font-semibold">Please Select</h1>
+		<h1 class="mb-4 text-4xl">Main Menu</h1>
 		<nav>
 			<ul bind:this={linksParentEl}>
 				{#each allRoutes as { label, url }, index}

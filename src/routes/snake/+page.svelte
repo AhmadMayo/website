@@ -125,6 +125,30 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Ahmed Abdel-Aziz | A Game That I Made</title>
+	<meta
+		name="description"
+		content="A blast from the past."
+	/>
+	<meta
+		property="og:title"
+		content="Ahmed Abdel-Aziz | A Game That I Made"
+	/>
+	<meta
+		property="og:description"
+		content="A blast from the past."
+	/>
+	<meta
+		name="twitter:title"
+		content="Ahmed Abdel-Aziz | A Game That I Made"
+	/>
+	<meta
+		name="twitter:description"
+		content="A blast from the past."
+	/>
+</svelte:head>
+
 <svelte:window
 	onkeydown={(event) => {
 		if (event.key == 'Escape') {
@@ -188,7 +212,7 @@
 	}}
 />
 
-<h1 class="text-center text-3xl font-bold">Snake</h1>
+<h1 class="text-center text-4xl">Snake</h1>
 <div
 	class="grid grow grid-cols-1 grid-rows-1 place-items-center"
 	bind:this={playAreaContainerEl}

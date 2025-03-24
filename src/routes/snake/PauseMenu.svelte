@@ -129,7 +129,7 @@
 					goto(event.currentTarget.href);
 				}}
 			>
-				Back to main menu
+				Main Menu
 			</a>
 		</li>
 	</ul>
