@@ -121,11 +121,15 @@
 					"
 					role="menuitem"
 					href={url}
-					onanimationend={() => {
-						goto(url);
-					}}
 					onfocus={() => {
 						selectionIndex = index;
+					}}
+					onclick={(event) => {
+						event.preventDefault();
+						selected = index;
+					}}
+					onanimationend={() => {
+						goto(url);
 					}}
 				>
 					{label}

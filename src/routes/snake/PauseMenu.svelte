@@ -77,11 +77,11 @@
           ps-4
           {selectionIndex == 0 ? 'before:opacity-100' : 'before:opacity-0'}
         "
-				onclick={() => {
-					selected = 0;
-				}}
 				onfocus={() => {
 					selectionIndex = 0;
+				}}
+				onclick={() => {
+					selected = 0;
 				}}
 				onanimationend={onResume}
 			>
@@ -99,11 +99,11 @@
           ps-4
           {selectionIndex == 1 ? 'before:opacity-100' : 'before:opacity-0'}
         "
-				onclick={() => {
-					selected = 1;
-				}}
 				onfocus={() => {
 					selectionIndex = 1;
+				}}
+				onclick={() => {
+					selected = 1;
 				}}
 				onanimationend={onNewGame}
 			>
@@ -124,6 +124,10 @@
 				href="/"
 				onfocus={() => {
 					selectionIndex = 2;
+				}}
+				onclick={(event) => {
+					event.preventDefault();
+					selected = 2;
 				}}
 				onanimationend={(event) => {
 					goto(event.currentTarget.href);

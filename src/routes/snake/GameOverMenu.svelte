@@ -70,16 +70,20 @@
 		<li>
 			<button
 				class="
-            relative
-            focus:outline-none
-            {selectionIndex == 0 ? 'text-primary-500' : ''}
-            {selected == 0 ? 'selected' : ''}
-            selection-link
-            ps-4
-            {selectionIndex == 0 ? 'before:opacity-100' : 'before:opacity-0'}
-          "
+					relative
+					focus:outline-none
+					{selectionIndex == 0 ? 'text-primary-500' : ''}
+					{selected == 0 ? 'selected' : ''}
+					selection-link
+					ps-4
+					{selectionIndex == 0 ? 'before:opacity-100' : 'before:opacity-0'}
+				"
 				onfocus={() => {
 					selectionIndex = 0;
+				}}
+				onclick={(event) => {
+					event.preventDefault();
+					selected = 0;
 				}}
 				onanimationend={onNewGame}
 			>
@@ -89,17 +93,21 @@
 		<li>
 			<a
 				class="
-            relative
-            focus:outline-none
-            {selectionIndex == 1 ? 'text-primary-500' : ''}
-            {selected == 1 ? 'selected' : ''}
-            selection-link
-            ps-4
-            {selectionIndex == 1 ? 'before:opacity-100' : 'before:opacity-0'}
-          "
+					relative
+					focus:outline-none
+					{selectionIndex == 1 ? 'text-primary-500' : ''}
+					{selected == 1 ? 'selected' : ''}
+					selection-link
+					ps-4
+					{selectionIndex == 1 ? 'before:opacity-100' : 'before:opacity-0'}
+				"
 				href="/"
 				onfocus={() => {
 					selectionIndex = 1;
+				}}
+				onclick={(event) => {
+					event.preventDefault();
+					selected = 1;
 				}}
 				onanimationend={(event) => {
 					goto(event.currentTarget.href);

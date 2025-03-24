@@ -93,6 +93,10 @@
 							onfocus={() => {
 								selectionIndex = index;
 							}}
+							onclick={(event) => {
+								event.preventDefault();
+								selected = index;
+							}}
 							onanimationend={() => {
 								goto(url);
 							}}
