@@ -60,26 +60,7 @@
 			y: newY,
 		};
 	}
-	function getNewFoodLocation(): Location {
-		return {
-			x: Math.round(Math.random() * (playAreaWidth - 1)),
-			y: Math.round(Math.random() * (playAreaHeight - 1)),
-		};
-	}
-
-	let game = $state<Game>({
-		state: 'not-started',
-		snake: [],
-		food: { x: 0, y: 0 },
-		direction: { x: 1, y: 0 },
-		score: 0,
-	});
-
-	function loop() {
-		if (game.state != 'running') {
-			return;
-		}
-
+	function moveSnake() {
 		const snake = game.snake;
 		const food = game.food;
 		snake.unshift(
@@ -104,6 +85,28 @@
 				return;
 			}
 		}
+	}
+	function getNewFoodLocation(): Location {
+		return {
+			x: Math.round(Math.random() * (playAreaWidth - 1)),
+			y: Math.round(Math.random() * (playAreaHeight - 1)),
+		};
+	}
+
+	let game = $state<Game>({
+		state: 'not-started',
+		snake: [],
+		food: { x: 0, y: 0 },
+		direction: { x: 1, y: 0 },
+		score: 0,
+	});
+
+	function loop() {
+		if (game.state != 'running') {
+			return;
+		}
+
+		moveSnake();
 
 		setTimeout(loop, gameSpeed);
 	}
@@ -180,6 +183,7 @@
 		}
 
 		game.direction = newDirection;
+		moveSnake();
 		return;
 	}}
 />
