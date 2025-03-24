@@ -50,7 +50,7 @@
 		}
 	}}
 />
-<h1 class="text-center text-2xl font-bold">About me</h1>
+<h1 class="text-center text-3xl font-bold">About Me</h1>
 <div>
 	<img
 		src="/my-picture.jpg"

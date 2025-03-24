@@ -44,7 +44,12 @@
 	}}
 />
 
-<h1 bind:this={titleEl} class="text-center text-2xl font-bold">Experience</h1>
+<h1
+	bind:this={titleEl}
+	class="text-center text-3xl font-bold"
+>
+	Experience
+</h1>
 {#each experience as position, index}
 	{@render renderPosition(position)}
 	{#if index != experience.length - 1}
@@ -62,13 +67,16 @@
 	responsibilities,
 }: Position)}
 	<div>
-		<h2 class="text-lg font-semibold">
+		<h2 class="text-xl font-semibold">
 			{title}
 		</h2>
 		<div>
 			at
 			{#if companyWebsite != undefined}
-				<a class="text-secondary-50 underline" href={companyWebsite}>{companyName}</a>
+				<a
+					class="text-secondary-50 underline"
+					href={companyWebsite}>{companyName}</a
+				>
 			{:else}
 				<span>{companyName}</span>
 			{/if}

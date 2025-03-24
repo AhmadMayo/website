@@ -50,7 +50,7 @@
 	}}
 />
 
-<h1 class="text-center text-2xl font-bold">Skills</h1>
+<h1 class="text-center text-3xl font-bold">Skills</h1>
 <ul class="grid list-disc grid-cols-1 ps-4 sm:grid-cols-1">
 	<li>Javascript (9 years)</li>
 	<li>Typescript (6 years)</li>
