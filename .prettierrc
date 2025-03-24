@@ -3,7 +3,11 @@
 	"singleQuote": true,
 	"trailingComma": "all",
 	"semi": true,
-	"printWidth": 100,
+	"printWidth": 80,
+	"singleAttributePerLine": true,
+	"bracketSameLine": false,
+	"svelteBracketNewLine": true,
+	"tabWidth": 2,
 	"plugins": ["prettier-plugin-svelte", "prettier-plugin-tailwindcss"],
 	"overrides": [
 		{

@@ -4,7 +4,9 @@
 	let selectionIndex = $state(0);
 	let linksParentEl: HTMLUListElement;
 	$effect(() => {
-		linksParentEl.children[selectionIndex].querySelector('a')?.focus();
+		linksParentEl.children[selectionIndex]
+			.querySelector('.selection-link')
+			?.focus();
 	});
 
 	let selected = $state<null | number>(null);
@@ -12,6 +14,7 @@
 	const allRoutes = [
 		{ label: 'Experience', url: '/experience' },
 		{ label: 'Skills', url: '/skills' },
+		{ label: 'Snake', url: '/snake' },
 	];
 </script>
 
@@ -35,7 +38,8 @@
 
 		if (event.key == 'ArrowUp') {
 			event.preventDefault();
-			selectionIndex = (allRoutes.length + selectionIndex - 1) % allRoutes.length;
+			selectionIndex =
+				(allRoutes.length + selectionIndex - 1) % allRoutes.length;
 			return;
 		}
 
@@ -48,20 +52,33 @@
 />
 <h1 class="text-center text-2xl font-bold">About me</h1>
 <div>
-	<img src="/my-picture.jpg" alt="Ahmed Abdel-Aziz" class="float-end w-36 lg:w-60" />
-	Hi there, I'm Ahmed Abdel-Aziz, but you can call me Mayo. I've been working mainly as a front-end developer
-	since 2015. I loved JS since I learned it, and although I learned and loved other technologies, I still
-	consider my self as a front end engineer.
+	<img
+		src="/my-picture.jpg"
+		alt="Ahmed Abdel-Aziz"
+		class="float-end w-36 lg:w-60"
+	/>
+	Hi there, I'm Ahmed Abdel-Aziz, but you can call me Mayo. I've been working mainly
+	as a front-end developer since 2015. I loved JS since I learned it, and although
+	I learned and loved other technologies, I still consider my self as a front end
+	engineer.
 	<br />
 	<br />
-	I love how the front end is the middle space between engineering and creativity, and I spare no effort
-	to produce the most appealing UI with the best performance.
+	I love how the front end is the middle space between engineering and creativity,
+	and I spare no effort to produce the most appealing UI with the best performance.
 	<br />
 	<br />
-	Mainly my experience is in building highly interactive and real time web applications, and my main
-	tech stack is Typescript, React, NodeJS, Go, PostgreSQL, and Docker. You can find more about my experience
-	<a class="btn btn-sm preset-filled-secondary-500" href="/experience">here</a>
-	and about my skills <a class="btn btn-sm preset-filled-secondary-500" href="/skills">here</a>.
+	Mainly my experience is in building highly interactive and real time web applications,
+	and my main tech stack is Typescript, React, NodeJS, Go, PostgreSQL, and Docker.
+	You can find more about my experience
+	<a
+		class="btn btn-sm preset-filled-secondary-500"
+		href="/experience">here</a
+	>
+	and about my skills
+	<a
+		class="btn btn-sm preset-filled-secondary-500"
+		href="/skills">here</a
+	>.
 	<br />
 	<br />
 	Thanks for visiting my website.

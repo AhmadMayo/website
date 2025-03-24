@@ -4,7 +4,9 @@
 	let selectionIndex = $state(0);
 	let linksParentEl: HTMLUListElement;
 	$effect(() => {
-		linksParentEl.children[selectionIndex].querySelector('a')?.focus();
+		linksParentEl.children[selectionIndex]
+			.querySelector('.selection-link')
+			?.focus();
 	});
 
 	let selected = $state<null | number>(null);
@@ -12,6 +14,7 @@
 	const allRoutes = [
 		{ label: 'About Me', url: '/about' },
 		{ label: 'Experience', url: '/experience' },
+		{ label: 'Snake', url: '/snake' },
 	];
 </script>
 
@@ -34,7 +37,8 @@
 
 		if (event.key == 'ArrowUp') {
 			event.preventDefault();
-			selectionIndex = (allRoutes.length + selectionIndex - 1) % allRoutes.length;
+			selectionIndex =
+				(allRoutes.length + selectionIndex - 1) % allRoutes.length;
 			return;
 		}
 

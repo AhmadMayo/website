@@ -4,7 +4,9 @@
 	let selectionIndex = $state(0);
 	let linksParentEl: HTMLUListElement;
 	$effect(() => {
-		linksParentEl.children[selectionIndex].querySelector('a')?.focus();
+		linksParentEl.children[selectionIndex]
+			.querySelector('.selection-link')
+			?.focus();
 	});
 
 	let selected = $state<null | number>(null);
@@ -13,6 +15,7 @@
 		{ label: 'About Me', url: '/about' },
 		{ label: 'Experience', url: '/experience' },
 		{ label: 'Skills', url: '/skills' },
+		{ label: 'Snake', url: '/snake' },
 	];
 </script>
 
@@ -30,7 +33,10 @@
 		property="og:description"
 		content="Principal Frontend Engineer | Javascript Guru | CSS & a11y Passionate"
 	/>
-	<meta name="twitter:title" content="Ahmed Abdel-Aziz | Principal Front-End Engineer." />
+	<meta
+		name="twitter:title"
+		content="Ahmed Abdel-Aziz | Principal Front-End Engineer."
+	/>
 	<meta
 		name="twitter:description"
 		content="Principal Frontend Engineer | Javascript Guru | CSS & a11y Passionate"
@@ -51,7 +57,8 @@
 
 		if (event.key == 'ArrowUp') {
 			event.preventDefault();
-			selectionIndex = (allRoutes.length + selectionIndex - 1) % allRoutes.length;
+			selectionIndex =
+				(allRoutes.length + selectionIndex - 1) % allRoutes.length;
 			return;
 		}
 
@@ -94,7 +101,9 @@
 				{/each}
 			</ul>
 		</nav>
-		<div class="mt-16 max-w-xl">P.S. Use the keyboard buttons, or the console's buttons.</div>
+		<div class="mt-16 max-w-xl">
+			P.S. Use the keyboard buttons, or the console's buttons.
+		</div>
 	</div>
 </div>
 
