@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, untrack } from 'svelte';
 	import GameOverMenu from './GameOverMenu.svelte';
 	import type { Direction, Game, Location } from './interfaces';
 	import PauseMenu from './PauseMenu.svelte';
@@ -110,29 +110,32 @@
 
 	onMount(() => {
 		game = getInitialGame();
-		loop();
+	});
+	$effect(() => {
+		if (game.state != 'running') {
+			return;
+		}
+
+		untrack(() => {
+			loop();
+		});
 	});
 </script>
 
 <svelte:window
 	onkeydown={(event) => {
 		if (event.key == 'Escape') {
-			console.log('event.key', event.key);
 			if (game.state == 'running') {
-				console.log('will pause');
 				game.state = 'paused';
 				return;
 			}
 
 			if (game.state == 'paused') {
-				console.log('will resume');
 				game.state = 'running';
-				loop();
 				return;
 			}
 
 			if (game.state == 'finished') {
-				console.log('will exit');
 				goto('/');
 				return;
 			}
@@ -219,11 +222,9 @@
 		<PauseMenu
 			onResume={() => {
 				game.state = 'running';
-				loop();
 			}}
 			onNewGame={() => {
 				game = getInitialGame();
-				loop();
 			}}
 		/>
 	{/if}
@@ -234,7 +235,6 @@
 			score={game.score}
 			onNewGame={() => {
 				game = getInitialGame();
-				loop();
 			}}
 		/>
 	{/if}
