@@ -4,7 +4,7 @@
 	"editor.formatOnPaste": true,
 	"editor.formatOnSave": true,
 	"editor.formatOnSaveMode": "file",
-	"files.autoSave": "onFocusChange",
+	"files.autoSave": "onWindowChange",
 	"eslint.format.enable": true,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "always"
