@@ -77,7 +77,9 @@
 		>
 			{@render children()}
 		</main>
-		<footer class="col-start-1 col-end-2 row-start-2 row-end-3 flex items-center justify-around">
+		<footer
+			class="col-start-1 col-end-2 row-start-2 row-end-3 flex items-center justify-around"
+		>
 			<!-- Arrows -->
 			<div
 				class="
@@ -87,7 +89,9 @@
 				"
 			>
 				<!-- Left -->
-				<div class="button col-start-1 col-end-3 row-start-2 -row-end-2 transition ease-out">
+				<div
+					class="button col-start-1 col-end-3 row-start-2 -row-end-2 transition ease-out"
+				>
 					<button
 						class="
 							block h-full w-full
@@ -96,13 +100,17 @@
 						"
 						aria-label="Left Arrorw"
 						onclick={() => {
-							window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft' }));
+							window.dispatchEvent(
+								new KeyboardEvent('keydown', { key: 'ArrowLeft' }),
+							);
 						}}
 					>
 					</button>
 				</div>
 				<!-- Up -->
-				<div class="button col-start-2 -col-end-2 row-start-1 row-end-3 transition ease-out">
+				<div
+					class="button col-start-2 -col-end-2 row-start-1 row-end-3 transition ease-out"
+				>
 					<button
 						class="
 							h-full w-full
@@ -111,13 +119,17 @@
 						"
 						aria-label="Arrow Up"
 						onmousedown={() => {
-							window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp' }));
+							window.dispatchEvent(
+								new KeyboardEvent('keydown', { key: 'ArrowUp' }),
+							);
 						}}
 					>
 					</button>
 				</div>
 				<!-- Right -->
-				<div class="button -col-start-3 -col-end-1 row-start-2 -row-end-2 transition ease-out">
+				<div
+					class="button -col-start-3 -col-end-1 row-start-2 -row-end-2 transition ease-out"
+				>
 					<button
 						class="
 							block h-full w-full
@@ -126,12 +138,16 @@
 						"
 						aria-label="Arrow Right"
 						onclick={() => {
-							window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
+							window.dispatchEvent(
+								new KeyboardEvent('keydown', { key: 'ArrowRight' }),
+							);
 						}}
 					></button>
 				</div>
 				<!-- Down -->
-				<div class="button col-start-2 -col-end-2 -row-start-3 -row-end-1 transition ease-out">
+				<div
+					class="button col-start-2 -col-end-2 -row-start-3 -row-end-1 transition ease-out"
+				>
 					<button
 						class="
 							h-full w-full
@@ -140,7 +156,9 @@
 						"
 						aria-label="Arrow Down"
 						onmousedown={() => {
-							window.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+							window.dispatchEvent(
+								new KeyboardEvent('keydown', { key: 'ArrowDown' }),
+							);
 						}}
 					></button>
 				</div>
@@ -156,21 +174,39 @@
 					ariaLabel: string;
 				})}
 					<div class="flex items-center gap-4 lg:flex-col">
-						<a class="button block h-4 w-8 bg-gray-600" {href} aria-label={ariaLabel}></a>
+						<a
+							class="button block h-4 w-8 bg-gray-600"
+							{href}
+							aria-label={ariaLabel}
+						></a>
 						<span class="text-xs">{label}</span>
 					</div>
 				{/snippet}
-				{@render internalLinkButton({ href: '/about', label: 'A', ariaLabel: 'About' })}
-				{@render internalLinkButton({ href: '/experience', label: 'E', ariaLabel: 'Experience' })}
-				{@render internalLinkButton({ href: '/skills', label: 'S', ariaLabel: 'Skills' })}
+				{@render internalLinkButton({
+					href: '/about',
+					label: 'A',
+					ariaLabel: 'About',
+				})}
+				{@render internalLinkButton({
+					href: '/experience',
+					label: 'E',
+					ariaLabel: 'Experience',
+				})}
+				{@render internalLinkButton({
+					href: '/skills',
+					label: 'S',
+					ariaLabel: 'Skills',
+				})}
 			</nav>
-			<div class="grid h-20 w-20 grid-cols-[45%_5%_5%_45%] grid-rows-[45%_5%_5%_45%]">
+			<div
+				class="grid h-20 w-20 grid-cols-[45%_5%_5%_45%] grid-rows-[45%_5%_5%_45%]"
+			>
 				<a
 					aria-label="github account"
 					href="https://github.com/AhmadMayo"
 					target="_blank"
 					class="
-						button
+						button overflow-hidden
 						col-start-2 col-end-5 row-start-1 row-end-4
 						grid place-items-center
 						rounded-full bg-black p-1 transition ease-out dark:bg-white
@@ -180,7 +216,7 @@
 					}}
 				>
 					<enhanced:img
-						src="/static/github-pixelated-logo.png"
+						src="/static/github-8bit.png"
 						alt="github account"
 						class="h-full w-full object-cover"
 					/>
@@ -190,7 +226,7 @@
 					href="https://www.linkedin.com/in/ahmad-mayo/"
 					target="_blank"
 					class="
-						button
+						button overflow-hidden
 						col-start-1 col-end-4 row-start-2 row-end-5
 						grid place-items-center
 						rounded-full bg-white p-2 transition ease-out
@@ -200,7 +236,7 @@
 					}}
 				>
 					<enhanced:img
-						src="/static/linkedin-pixelated-logo.png"
+						src="/static/linkedin-8bit.webp"
 						alt="linkedin account"
 						class="h-full w-full object-cover"
 					/>
@@ -232,35 +268,55 @@
 			*/
 			calc(var(--pixel-size) * -2) 0 0 0 var(--inner-border-color),
 			calc(var(--pixel-size) * 2) 0 0 0 var(--inner-border-color),
-			0 calc(var(--pixel-size) * -1) 0 var(--pixel-size) var(--inner-border-color),
+			0 calc(var(--pixel-size) * -1) 0 var(--pixel-size)
+				var(--inner-border-color),
 			0 var(--pixel-size) 0 var(--pixel-size) var(--inner-border-color),
 			0 calc(var(--pixel-size) * -4) 0 0 var(--inner-border-color),
 			0 calc(var(--pixel-size) * 4) 0 0 var(--inner-border-color),
-			0 calc(var(--pixel-size) * -6) 0 calc(var(--pixel-size) * -1) var(--inner-border-color),
-			0 calc(var(--pixel-size) * 6) 0 calc(var(--pixel-size) * -1) var(--inner-border-color),
-			0 calc(var(--pixel-size) * -8) 0 calc(var(--pixel-size) * -2) var(--inner-border-color),
-			0 calc(var(--pixel-size) * 8) 0 calc(var(--pixel-size) * -2) var(--inner-border-color),
-			0 calc(var(--pixel-size) * -11) 0 calc(var(--pixel-size) * -4) var(--inner-border-color),
-			0 calc(var(--pixel-size) * 11) 0 calc(var(--pixel-size) * -4) var(--inner-border-color),
-			0 calc(var(--pixel-size) * -14) 0 calc(var(--pixel-size) * -6) var(--inner-border-color),
-			0 calc(var(--pixel-size) * 14) 0 calc(var(--pixel-size) * -6) var(--inner-border-color),
+			0 calc(var(--pixel-size) * -6) 0 calc(var(--pixel-size) * -1)
+				var(--inner-border-color),
+			0 calc(var(--pixel-size) * 6) 0 calc(var(--pixel-size) * -1)
+				var(--inner-border-color),
+			0 calc(var(--pixel-size) * -8) 0 calc(var(--pixel-size) * -2)
+				var(--inner-border-color),
+			0 calc(var(--pixel-size) * 8) 0 calc(var(--pixel-size) * -2)
+				var(--inner-border-color),
+			0 calc(var(--pixel-size) * -11) 0 calc(var(--pixel-size) * -4)
+				var(--inner-border-color),
+			0 calc(var(--pixel-size) * 11) 0 calc(var(--pixel-size) * -4)
+				var(--inner-border-color),
+			0 calc(var(--pixel-size) * -14) 0 calc(var(--pixel-size) * -6)
+				var(--inner-border-color),
+			0 calc(var(--pixel-size) * 14) 0 calc(var(--pixel-size) * -6)
+				var(--inner-border-color),
 			/*
 				Outer border layer
-			*/ calc(var(--pixel-size) * -3) 0 0 0 var(--outer-border-color),
+			*/ calc(var(--pixel-size) * -3) 0 0 0
+				var(--outer-border-color),
 			calc(var(--pixel-size) * 3) 0 0 0 var(--outer-border-color),
 			0 0 0 calc(var(--pixel-size) * 2) var(--outer-border-color),
-			0 calc(var(--pixel-size) * -3) 0 var(--pixel-size) var(--outer-border-color),
-			0 calc(var(--pixel-size) * 3) 0 var(--pixel-size) var(--outer-border-color),
+			0 calc(var(--pixel-size) * -3) 0 var(--pixel-size)
+				var(--outer-border-color),
+			0 calc(var(--pixel-size) * 3) 0 var(--pixel-size)
+				var(--outer-border-color),
 			0 calc(var(--pixel-size) * -5) 0 0 var(--outer-border-color),
 			0 calc(var(--pixel-size) * 5) 0 0 var(--outer-border-color),
-			0 calc(var(--pixel-size) * -7) 0 calc(var(--pixel-size) * -1) var(--outer-border-color),
-			0 calc(var(--pixel-size) * 7) 0 calc(var(--pixel-size) * -1) var(--outer-border-color),
-			0 calc(var(--pixel-size) * -9) 0 calc(var(--pixel-size) * -2) var(--outer-border-color),
-			0 calc(var(--pixel-size) * 9) 0 calc(var(--pixel-size) * -2) var(--outer-border-color),
-			0 calc(var(--pixel-size) * -12) 0 calc(var(--pixel-size) * -4) var(--outer-border-color),
-			0 calc(var(--pixel-size) * 12) 0 calc(var(--pixel-size) * -4) var(--outer-border-color),
-			0 calc(var(--pixel-size) * -15) 0 calc(var(--pixel-size) * -6) var(--outer-border-color),
-			0 calc(var(--pixel-size) * 15) 0 calc(var(--pixel-size) * -6) var(--outer-border-color),
+			0 calc(var(--pixel-size) * -7) 0 calc(var(--pixel-size) * -1)
+				var(--outer-border-color),
+			0 calc(var(--pixel-size) * 7) 0 calc(var(--pixel-size) * -1)
+				var(--outer-border-color),
+			0 calc(var(--pixel-size) * -9) 0 calc(var(--pixel-size) * -2)
+				var(--outer-border-color),
+			0 calc(var(--pixel-size) * 9) 0 calc(var(--pixel-size) * -2)
+				var(--outer-border-color),
+			0 calc(var(--pixel-size) * -12) 0 calc(var(--pixel-size) * -4)
+				var(--outer-border-color),
+			0 calc(var(--pixel-size) * 12) 0 calc(var(--pixel-size) * -4)
+				var(--outer-border-color),
+			0 calc(var(--pixel-size) * -15) 0 calc(var(--pixel-size) * -6)
+				var(--outer-border-color),
+			0 calc(var(--pixel-size) * 15) 0 calc(var(--pixel-size) * -6)
+				var(--outer-border-color),
 			/*
 				Inset shadow
 			*/ var(--shadow-x) var(--shadow-y) 0 #000000 inset;
