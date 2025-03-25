@@ -78,7 +78,7 @@
 <h1 class="text-center text-4xl">About Me</h1>
 <div>
 	<img
-		src="/my-picture.jpg"
+		src="/my-picture.png"
 		alt="Ahmed Abdel-Aziz"
 		class="float-end w-36 lg:w-60"
 	/>
