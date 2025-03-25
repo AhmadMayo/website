@@ -28,19 +28,13 @@
 		content="Principal Frontend Engineer | Javascript Guru | CSS & a11y Passionate"
 	/>
 	<meta
+		name="twitter:title"
 		property="og:title"
 		content="Ahmed Abdel-Aziz | Principal Front-End Engineer"
 	/>
 	<meta
-		property="og:description"
-		content="Principal Frontend Engineer | Javascript Guru | CSS & a11y Passionate"
-	/>
-	<meta
-		name="twitter:title"
-		content="Ahmed Abdel-Aziz | Principal Front-End Engineer."
-	/>
-	<meta
 		name="twitter:description"
+		property="og:description"
 		content="Principal Frontend Engineer | Javascript Guru | CSS & a11y Passionate"
 	/>
 </svelte:head>

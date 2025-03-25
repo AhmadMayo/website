@@ -26,19 +26,13 @@
 		content="Technologies that I master."
 	/>
 	<meta
+		name="twitter:title"
 		property="og:title"
 		content="Ahmed Abdel-Aziz | Skills"
 	/>
 	<meta
-		property="og:description"
-		content="Technologies that I master."
-	/>
-	<meta
-		name="twitter:title"
-		content="Ahmed Abdel-Aziz | Skills"
-	/>
-	<meta
 		name="twitter:description"
+		property="og:description"
 		content="Technologies that I master."
 	/>
 </svelte:head>

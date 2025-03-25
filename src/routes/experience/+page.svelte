@@ -12,19 +12,13 @@
 		content="Technical experience since I started."
 	/>
 	<meta
+		name="twitter:title"
 		property="og:title"
 		content="Ahmed Abdel-Aziz | Experience"
 	/>
 	<meta
-		property="og:description"
-		content="Technical experience since I started."
-	/>
-	<meta
-		name="twitter:title"
-		content="Ahmed Abdel-Aziz | Experience"
-	/>
-	<meta
 		name="twitter:description"
+		property="og:description"
 		content="Technical experience since I started."
 	/>
 </svelte:head>

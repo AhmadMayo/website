@@ -132,19 +132,13 @@
 		content="A blast from the past."
 	/>
 	<meta
+		name="twitter:title"
 		property="og:title"
 		content="Ahmed Abdel-Aziz | A Game That I Made"
 	/>
 	<meta
-		property="og:description"
-		content="A blast from the past."
-	/>
-	<meta
-		name="twitter:title"
-		content="Ahmed Abdel-Aziz | A Game That I Made"
-	/>
-	<meta
 		name="twitter:description"
+		property="og:description"
 		content="A blast from the past."
 	/>
 </svelte:head>

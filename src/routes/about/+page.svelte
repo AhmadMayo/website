@@ -26,19 +26,13 @@
 		content="Know more about me."
 	/>
 	<meta
+		name="twitter:title"
 		property="og:title"
 		content="Ahmed Abdel-Aziz | About"
 	/>
 	<meta
-		property="og:description"
-		content="Know more about me."
-	/>
-	<meta
-		name="twitter:title"
-		content="Ahmed Abdel-Aziz | About"
-	/>
-	<meta
 		name="twitter:description"
+		property="og:description"
 		content="Know more about me."
 	/>
 </svelte:head>
