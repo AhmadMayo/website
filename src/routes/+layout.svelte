@@ -6,6 +6,8 @@
 
 	import '../app.css';
 	import { afterNavigate, goto } from '$app/navigation';
+	import { page } from '$app/state';
+	import { setContext } from 'svelte';
 
 	dayjs.extend(duration);
 	dayjs.extend(relativeTime);
@@ -29,10 +31,40 @@
 			contentContainer.scrollTo({ top: 0, behavior: 'smooth' });
 		}, 100);
 	});
+
+	const allRoutes = [
+		{ label: 'About Me', url: '/about' },
+		{ label: 'My Experience', url: '/experience' },
+		{ label: 'My Skills', url: '/skills' },
+		{ label: 'Remember Snake?', url: '/snake' },
+	];
+	const menuRoutes = $derived(
+		allRoutes.filter((route) => route.url != page.url.pathname),
+	);
+	let selectionIndex = $state(0);
+	let linksParentEl: HTMLUListElement | undefined;
+	$effect(() => {
+		const el = linksParentEl?.children[selectionIndex]?.querySelector(
+			'.selection-link',
+		) as HTMLAnchorElement | null;
+
+		if (!el) {
+			return;
+		}
+		el?.focus();
+	});
+
+	let selected = $state<null | number>(null);
+
+	setContext('linksMenu', linksMenu);
 </script>
 
 <svelte:window
 	onkeydown={(event) => {
+		if (!linksParentEl) {
+			return;
+		}
+
 		if (event.ctrlKey || event.shiftKey || event.altKey) {
 			return;
 		}
@@ -54,6 +86,52 @@
 
 		if (event.key == 's') {
 			goto('/skills');
+			return;
+		}
+
+		if (event.key == 'Enter' || event.key == 'ArrowRight') {
+			if (selected != null) {
+				return;
+			}
+
+			event.preventDefault();
+			selected = selectionIndex;
+			return;
+		}
+
+		const isScrolledToBottom =
+			Math.abs(
+				contentContainer.scrollHeight -
+					contentContainer.scrollTop -
+					contentContainer.clientHeight,
+			) < 1;
+
+		if (event.key == 'ArrowUp') {
+			if (isScrolledToBottom && selectionIndex != 0) {
+				event.preventDefault();
+				event.stopPropagation();
+				selectionIndex =
+					(menuRoutes.length + selectionIndex - 1) % menuRoutes.length;
+			} else {
+				contentContainer.scrollTo({
+					top: contentContainer.scrollTop - 100,
+					behavior: 'smooth',
+				});
+			}
+			return;
+		}
+
+		if (event.key == 'ArrowDown') {
+			if (isScrolledToBottom) {
+				event.preventDefault();
+				event.stopPropagation();
+				selectionIndex = (selectionIndex + 1) % menuRoutes.length;
+			} else {
+				contentContainer.scrollTo({
+					top: contentContainer.scrollTop + 100,
+					behavior: 'smooth',
+				});
+			}
 			return;
 		}
 	}}
@@ -246,6 +324,42 @@
 	</div>
 </div>
 
+{#snippet linksMenu()}
+	<nav>
+		<ul bind:this={linksParentEl}>
+			{#each menuRoutes as { label, url }, index}
+				<li>
+					<a
+						class="
+								relative
+								focus:outline-none
+								{selectionIndex == index ? 'text-primary-500' : ''}
+								{selected == index ? 'selected' : ''}
+								selection-link
+								ps-4
+								{selectionIndex == index ? 'before:opacity-100' : 'before:opacity-0'}
+							"
+						href={url}
+						onfocus={() => {
+							selectionIndex = index;
+						}}
+						onclick={(event) => {
+							event.preventDefault();
+							selected = index;
+						}}
+						onanimationend={() => {
+							selected = null;
+							goto(url);
+						}}
+					>
+						{label}
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</nav>
+{/snippet}
+
 <style lang="postcss">
 	@reference "tailwindcss";
 
@@ -331,5 +445,37 @@
 	.button:active {
 		--shadow-x: -1.5px;
 		--shadow-y: 1.5px;
+	}
+
+	.selection-link:before {
+		--size: 3px;
+		--color: var(--color-primary-500);
+		content: '';
+		left: 0;
+		top: calc(50% - 0.5rem + 1px);
+		position: absolute;
+		width: var(--size);
+		height: var(--size);
+		box-shadow:
+			var(--size) var(--size) 0 0 var(--color),
+			calc(var(--size) * 2) calc(var(--size) * 2) 0 0 var(--color),
+			var(--size) calc(var(--size) * 3) 0 0 var(--color);
+	}
+
+	.selected {
+		animation: selection 0.5s 2 linear;
+	}
+	@keyframes selection {
+		0% {
+			opacity: 1;
+		}
+
+		50% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
+		}
 	}
 </style>

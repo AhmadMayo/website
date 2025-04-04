@@ -1,8 +1,11 @@
 <script lang="ts">
+	import { getContext, type Snippet } from 'svelte';
 	import dayjs from 'dayjs';
 	import experience, { type Position } from './experience';
 
 	let titleEl: HTMLElement;
+
+	const linksMenu = getContext<Snippet>('linksMenu');
 </script>
 
 <svelte:head>
@@ -73,6 +76,8 @@
 		<hr />
 	{/if}
 {/each}
+<hr />
+{@render linksMenu()}
 
 {#snippet renderPosition({
 	companyName,
