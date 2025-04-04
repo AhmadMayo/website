@@ -55,6 +55,11 @@
 	});
 
 	let selected = $state<null | number>(null);
+	$effect(() => {
+		page.url;
+		selected = null;
+		selectionIndex = 0;
+	});
 
 	setContext('linksMenu', linksMenu);
 </script>
@@ -348,7 +353,6 @@
 							selected = index;
 						}}
 						onanimationend={() => {
-							selected = null;
 							goto(url);
 						}}
 					>
