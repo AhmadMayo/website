@@ -441,6 +441,7 @@
 		--shadow-y: 3px;
 
 		filter: drop-shadow(var(--shadow-x) var(--shadow-y) 0 #000000);
+		touch-action: manipulation;
 	}
 	.button:active {
 		--shadow-x: -1.5px;
