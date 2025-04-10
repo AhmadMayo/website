@@ -61,7 +61,7 @@
 />
 
 <div
-	class="z-10 col-start-1 col-end-2 row-start-1 row-end-2 flex flex-col items-center gap-4 border border-white bg-black p-4 text-lg"
+	class="z-10 col-start-1 col-end-2 row-start-1 row-end-2 flex flex-col items-center gap-1 border border-black dark:border-white bg-white dark:bg-black p-4 text-lg"
 >
 	<h2 class="text-2xl">Game Paused</h2>
 	<hr class="w-full" />
@@ -71,7 +71,7 @@
 				class="
           relative
           focus:outline-none
-          {selectionIndex == 0 ? 'text-primary-500' : ''}
+          {selectionIndex == 0 ? 'text-primary-800 dark:text-primary-500' : ''}
           {selected == 0 ? 'selected' : ''}
           selection-link
           ps-4
@@ -93,7 +93,7 @@
 				class="
           relative
           focus:outline-none
-          {selectionIndex == 1 ? 'text-primary-500' : ''}
+          {selectionIndex == 1 ? 'text-primary-800 dark:text-primary-500' : ''}
           {selected == 1 ? 'selected' : ''}
           selection-link
           ps-4
@@ -115,7 +115,7 @@
 				class="
           relative
           focus:outline-none
-          {selectionIndex == 2 ? 'text-primary-500' : ''}
+          {selectionIndex == 2 ? 'text-primary-800 dark:text-primary-500' : ''}
           {selected == 2 ? 'selected' : ''}
           selection-link
           ps-4
@@ -142,7 +142,7 @@
 <style lang="postcss">
 	.selection-link:before {
 		--size: 3px;
-		--color: var(--color-primary-500);
+		--color: currentColor;
 		content: '';
 		left: 0;
 		top: calc(50% - 0.5rem + 1px);

@@ -214,7 +214,7 @@
 	<svg
 		style:width="{playAreaWidth}em"
 		style:height="{playAreaHeight}em"
-		class="relative col-start-1 col-end-2 row-start-1 row-end-2 border border-white text-[10px]"
+		class="relative col-start-1 col-end-2 row-start-1 row-end-2 border border-black dark:border-white text-[10px]"
 		viewBox="0 0 {playAreaWidth} {playAreaHeight}"
 	>
 		<!-- #region food -->
@@ -222,7 +222,7 @@
 			r=".5"
 			cx={game.food.x + 0.5}
 			cy={game.food.y + 0.5}
-			class="fill-primary-500"
+			class="fill-primary-800 dark:fill-primary-500"
 		/>
 
 		<!-- #endregion food -->
@@ -234,7 +234,7 @@
 				y={snakeSlot.y}
 				width="1"
 				height="1"
-				class="fill-white"
+				class="fill-black dark:fill-white"
 			/>
 		{/each}
 		<!-- #endregion snake -->

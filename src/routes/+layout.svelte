@@ -1,18 +1,19 @@
 <script lang="ts">
+	import { afterNavigate, goto } from '$app/navigation';
+	import { page } from '$app/state';
+	import { setContext, untrack } from 'svelte';
 	import duration from 'dayjs/plugin/duration';
 	import relativeTime from 'dayjs/plugin/relativeTime';
 	import dayjs from 'dayjs';
 	import autoAnimate from '@formkit/auto-animate';
+	import IconMoon from '@lucide/svelte/icons/moon';
+	import IconSun from '@lucide/svelte/icons/sun';
 
 	import '../app.css';
-	import { afterNavigate, goto } from '$app/navigation';
-	import { page } from '$app/state';
-	import { setContext } from 'svelte';
+	import type { LayoutProps } from './$types';
 
 	dayjs.extend(duration);
 	dayjs.extend(relativeTime);
-
-	const { children } = $props();
 
 	if (typeof window != 'undefined') {
 		console.log(`
@@ -24,6 +25,14 @@
 	|-----------------------------------------------------|
 	`);
 	}
+
+	const { data, children }: LayoutProps = $props();
+
+	let themeMode = $state<'light' | 'dark'>(data.initialThemeMode);
+	$effect.pre(() => {
+		document.documentElement.setAttribute('data-mode', themeMode);
+		document.cookie = `theme-mode=${themeMode}; path=/`;
+	});
 
 	let contentContainer: HTMLElement;
 	afterNavigate(() => {
@@ -147,8 +156,7 @@
 		data-theme="modern"
 		class="
 			console
-			bg-surface-50
-			dark:bg-surface-900 grid
+			bg-surface-900 grid
 			max-w-4xl grow basis-0
 			grid-cols-1 grid-rows-[1fr_8rem] p-2 md:grid-rows-[1fr_12rem]
 		"
@@ -156,12 +164,12 @@
 		<main
 			bind:this={contentContainer}
 			use:autoAnimate={{}}
-			class="col-start-1 col-end-2 row-start-1 row-end-2 flex flex-col gap-4 overflow-auto bg-black p-2"
+			class="col-start-1 col-end-2 row-start-1 row-end-2 flex flex-col gap-4 overflow-auto bg-white dark:bg-black p-2 transition-colors duration-200 text-black dark:text-white"
 		>
 			{@render children()}
 		</main>
 		<footer
-			class="col-start-1 col-end-2 row-start-2 row-end-3 flex items-center justify-around"
+			class="col-start-1 col-end-2 row-start-2 row-end-3 flex items-center justify-around text-white"
 		>
 			<!-- Arrows -->
 			<div
@@ -246,7 +254,9 @@
 					></button>
 				</div>
 			</div>
-			<nav class="flex flex-col gap-4 sm:flex-row lg:gap-12">
+			<nav
+				class="flex flex-col gap-2 sm:flex-row sm:gap-4 lg:gap-12 items-start"
+			>
 				{#snippet internalLinkButton({
 					href,
 					label,
@@ -256,7 +266,7 @@
 					label: string;
 					ariaLabel: string;
 				})}
-					<div class="flex items-center gap-4 lg:flex-col">
+					<div class="flex items-center gap-2 lg:gap-4 sm:flex-col">
 						<a
 							class="button block h-4 w-8 bg-gray-600"
 							{href}
@@ -265,6 +275,7 @@
 						<span class="text-xs">{label}</span>
 					</div>
 				{/snippet}
+
 				{@render internalLinkButton({
 					href: '/about',
 					label: 'A',
@@ -280,7 +291,37 @@
 					label: 'S',
 					ariaLabel: 'Skills',
 				})}
+				<label
+					class="
+						rounded-full h-5 w-9
+						bg-surface-950
+						inset-shadow-sm inset-shadow-black
+						flex items-center
+						{themeMode == 'light' ? 'gap-0' : 'gap-5'}
+						transition-all
+					"
+				>
+					<input
+						type="checkbox"
+						class="w-1 h-1 hidden"
+						onchange={() => {
+							themeMode = themeMode == 'light' ? 'dark' : 'light';
+						}}
+					/>
+					<div class="w-0"></div>
+					<div
+						class="rounded-full bg-white w-4 h-4 grid place-items-center text-black"
+					>
+						{#if themeMode == 'light'}
+							<IconSun size="12" />
+						{/if}
+						{#if themeMode == 'dark'}
+							<IconMoon size="12" />
+						{/if}
+					</div>
+				</label>
 			</nav>
+
 			<div
 				class="grid h-20 w-20 grid-cols-[45%_5%_5%_45%] grid-rows-[45%_5%_5%_45%]"
 			>
@@ -292,7 +333,7 @@
 						button overflow-hidden
 						col-start-2 col-end-5 row-start-1 row-end-4
 						grid place-items-center
-						rounded-full bg-black p-1 transition ease-out dark:bg-white
+						rounded-full p-1 transition ease-out bg-white
 					"
 					ondragstart={(event) => {
 						event.preventDefault();
@@ -338,7 +379,7 @@
 						class="
 								relative
 								focus:outline-none
-								{selectionIndex == index ? 'text-primary-500' : ''}
+								{selectionIndex == index ? 'text-primary-800 dark:text-primary-500' : ''}
 								{selected == index ? 'selected' : ''}
 								selection-link
 								ps-4
@@ -446,6 +487,7 @@
 
 		filter: drop-shadow(var(--shadow-x) var(--shadow-y) 0 #000000);
 		touch-action: manipulation;
+		user-select: none;
 	}
 	.button:active {
 		--shadow-x: -1.5px;
@@ -454,7 +496,7 @@
 
 	.selection-link:before {
 		--size: 3px;
-		--color: var(--color-primary-500);
+		--color: currentColor;
 		content: '';
 		left: 0;
 		top: calc(50% - 0.5rem + 1px);
