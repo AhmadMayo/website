@@ -24,14 +24,14 @@
 
 <h1 class="text-center text-4xl">My Skills</h1>
 <ul class="grid list-disc grid-cols-1 ps-4 sm:grid-cols-1">
-	<li>Javascript (9 years)</li>
-	<li>Typescript (6 years)</li>
+	<li>Javascript (10 years)</li>
+	<li>Typescript (7 years)</li>
 	<li>React (7 years)</li>
-	<li>Svelte (1 year)</li>
-	<li>NodeJS (6 years)</li>
+	<li>Svelte (2 year)</li>
+	<li>NodeJS (7 years)</li>
 	<li>Go (2 years)</li>
-	<li>SQL (5 years)</li>
-	<li>PostgreSQL (5 years)</li>
+	<li>SQL (6 years)</li>
+	<li>PostgreSQL (6 years)</li>
 	<li>MongoDB (2 years)</li>
 	<li>Docker (5 years)</li>
 </ul>

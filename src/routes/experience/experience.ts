@@ -2,22 +2,52 @@ export interface Position {
 	companyName: string;
 	companyWebsite?: string;
 	title: string;
-	startDate: Date;
 	endDate?: Date;
+	startDate: Date;
 	location: 'On-site' | 'Hybrid' | 'Remote';
 	responsibilities: string[];
 }
 
 const experience: Position[] = [
 	{
+		companyName: 'Cognitronix',
+		companyWebsite: 'https://cognitronixai.com/',
+		title: 'Software Development Lead',
+		startDate: new Date('2025-09'),
+		location: 'Hybrid',
+		responsibilities: [
+			'Lead technical implementation of web applications built on Svelte, Node.js, and Python/FastAPI, overseeing deployment and integration of in-house and third-party AI models into production from the ground up.',
+			'Define and maintain code standards, system architecture, and git workflow for the engineering team, establishing practices from the earliest stage of the product.',
+			'Conduct meetings with the CTO and business stakeholders to gather requirements and translate business needs into concrete technical implementation plans.',
+			'Built infrastructure and CI/CD pipelines from scratch, taking our products from concept to first production release.',
+			'Manage a cross-functional team of frontend, backend, and AI engineers, owning how AI models are integrated into live web applications while the CTO oversees the AI engineering work itself.',
+			'Operate as a hybrid Software Development Lead and Staff Engineer, splitting time between hands-on implementation and architectural leadership.',
+		],
+	},
+	{
+		companyName: 'VOIS',
+		companyWebsite: 'https://www.voiscentre.com/',
+		title: 'Software Development Lead',
+		endDate: new Date('2025-08'),
+		startDate: new Date('2025-04'),
+		location: 'Hybrid',
+		responsibilities: [
+			'Supervise technical implementation across all squads.',
+			'Mentor team members.',
+			'Coordinate and communicate with other leads.',
+			'Lead technical initiative to modernize tool-chains used in our products.',
+			'Implement features that require deep knowledge, or during tight deadlines.',
+		],
+	},
+	{
 		companyName: 'Lumofy',
 		companyWebsite: 'https://www.lumofy.ai/',
 		title: 'Front-End Lead',
-		startDate: new Date('2023-12'),
 		endDate: new Date('2025-03'),
+		startDate: new Date('2023-12'),
 		location: 'Remote',
 		responsibilities: [
-			' Review and enhance coding standards and guidelines.',
+			'Review and enhance coding standards and guidelines.',
 			'Review and enhance architecture in all front-end applications.',
 			'Review and enhance software development process.',
 			'Refine business requirements with the product team.',
@@ -31,8 +61,8 @@ const experience: Position[] = [
 		companyName: 'Kemet',
 		companyWebsite: 'https://www.kemettrading.com/',
 		title: 'Senior Front-End Engineer',
-		startDate: new Date('2023-05'),
 		endDate: new Date('2023-09'),
+		startDate: new Date('2023-05'),
 		location: 'Remote',
 		responsibilities: [
 			'Develop new user-facing features.',
@@ -49,8 +79,8 @@ const experience: Position[] = [
 		companyName: 'Axis',
 		companyWebsite: 'https://axisapp.com',
 		title: 'Front-End Lead',
-		startDate: new Date('2022-01'),
 		endDate: new Date('2023-04'),
+		startDate: new Date('2022-01'),
 		location: 'Hybrid',
 		responsibilities: [
 			'Review and enhance coding standards and guidelines.',
@@ -67,8 +97,8 @@ const experience: Position[] = [
 		companyName: 'IoT Blue',
 		companyWebsite: 'https://www.iotblue.com/',
 		title: 'Head of Research and Development',
-		startDate: new Date('2020-03'),
 		endDate: new Date('2021-12'),
+		startDate: new Date('2020-03'),
 		location: 'Hybrid',
 		responsibilities: [
 			'Identify possible underserved technical or user problems',
@@ -83,8 +113,8 @@ const experience: Position[] = [
 		companyName: 'IoT Blue',
 		companyWebsite: 'https://www.iotblue.com/',
 		title: 'Team Lead',
-		startDate: new Date('2018-07'),
 		endDate: new Date('2020-03'),
+		startDate: new Date('2018-07'),
 		location: 'Hybrid',
 		responsibilities: [
 			'Lead our Operations team to build end-user IoT applications using our IoT Platform “Cervello”.',
@@ -100,8 +130,8 @@ const experience: Position[] = [
 		companyName: 'IoT Blue',
 		companyWebsite: 'https://www.iotblue.com/',
 		title: 'Senior Front-End Engineer',
-		startDate: new Date('2016-09'),
 		endDate: new Date('2018-07'),
+		startDate: new Date('2016-09'),
 		location: 'On-site',
 		responsibilities: [
 			'Build front-end solution using latest technologies.',
@@ -118,8 +148,8 @@ const experience: Position[] = [
 		companyName: 'Sooft',
 		companyWebsite: 'https://sooft.es/',
 		title: 'Full-stack Engineer',
-		startDate: new Date('2015-09'),
 		endDate: new Date('2016-08'),
+		startDate: new Date('2015-09'),
 		location: 'On-site',
 		responsibilities: [
 			'Develop scalable and secure web applications, including adding or updating features according to the business requirements, and triaging, reproducing, and fixing bugs.',
