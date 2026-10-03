@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { getContext, type Snippet } from 'svelte';
+	import { getContext } from 'svelte';
+	import { type Snippet } from 'svelte';
 
 	const linksMenu = getContext<Snippet>('linksMenu');
 </script>

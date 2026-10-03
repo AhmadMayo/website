@@ -19,9 +19,7 @@
 		const focusedElement = linksParentEl?.children[
 			selectionIndex
 		].querySelector('.selection-link') as
-			| HTMLButtonElement
-			| HTMLAnchorElement
-			| null;
+			HTMLButtonElement | HTMLAnchorElement | null;
 		focusedElement?.focus();
 	});
 
@@ -61,7 +59,7 @@
 />
 
 <div
-	class="z-10 col-start-1 col-end-2 row-start-1 row-end-2 flex flex-col items-center gap-1 border border-black dark:border-white bg-white dark:bg-black p-4 text-lg"
+	class="z-10 col-start-1 col-end-2 row-start-1 row-end-2 flex flex-col items-center gap-1 border border-black bg-white p-4 text-lg dark:border-white dark:bg-black"
 >
 	<h2 class="text-2xl">Game Over</h2>
 	<p>Your Score: {score}</p>

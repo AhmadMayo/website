@@ -1,6 +1,6 @@
 @import 'tailwindcss';
-@import "@skeletonlabs/skeleton";
-@import "@skeletonlabs/skeleton/themes/modern";
+@import '@skeletonlabs/skeleton';
+@import '@skeletonlabs/skeleton/themes/modern';
 @import '@skeletonlabs/skeleton-svelte';
 
 @plugin '@tailwindcss/typography';
@@ -18,7 +18,6 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-
 	*,
 	::after,
 	::before,
@@ -26,11 +25,10 @@
 	::file-selector-button {
 		border-color: var(--color-gray-200, currentColor);
 	}
-
 }
 
 @theme {
-	--font-pixel: "VT323", "sans-serif";
+	--font-pixel: 'VT323', 'sans-serif';
 }
 
 @font-face {

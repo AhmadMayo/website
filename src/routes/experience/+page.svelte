@@ -70,7 +70,7 @@
 >
 	My Experience
 </h1>
-{#each experience as position, index}
+{#each experience as position, index (index)}
 	{@render renderPosition(position)}
 	{#if index != experience.length - 1}
 		<hr />
@@ -115,7 +115,7 @@
 			({dayjs.duration(dayjs(endDate).diff(dayjs(startDate))).humanize()})
 		</div>
 		<ul class="list-disc ps-4">
-			{#each responsibilities as responsibility}
+			{#each responsibilities as responsibility, index (index)}
 				<li>{responsibility}</li>
 			{/each}
 		</ul>

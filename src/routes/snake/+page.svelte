@@ -214,7 +214,7 @@
 	<svg
 		style:width="{playAreaWidth}em"
 		style:height="{playAreaHeight}em"
-		class="relative col-start-1 col-end-2 row-start-1 row-end-2 border border-black dark:border-white text-[10px]"
+		class="relative col-start-1 col-end-2 row-start-1 row-end-2 border border-black text-[10px] dark:border-white"
 		viewBox="0 0 {playAreaWidth} {playAreaHeight}"
 	>
 		<!-- #region food -->
@@ -228,7 +228,7 @@
 		<!-- #endregion food -->
 
 		<!-- #region snake -->
-		{#each game.snake as snakeSlot}
+		{#each game.snake as snakeSlot (`${snakeSlot.x}-${snakeSlot.y}`)}
 			<rect
 				x={snakeSlot.x}
 				y={snakeSlot.y}

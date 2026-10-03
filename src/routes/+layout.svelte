@@ -3,8 +3,8 @@
 	import { page } from '$app/state';
 	import { setContext, untrack } from 'svelte';
 	import duration from 'dayjs/plugin/duration';
-	import relativeTime from 'dayjs/plugin/relativeTime';
 	import dayjs from 'dayjs';
+	import relativeTime from 'dayjs/plugin/relativeTime';
 	import autoAnimate from '@formkit/auto-animate';
 	import IconMoon from '@lucide/svelte/icons/moon';
 	import IconSun from '@lucide/svelte/icons/sun';
@@ -28,14 +28,21 @@
 
 	const { data, children }: LayoutProps = $props();
 
-	let themeMode = $state<'light' | 'dark'>(data.initialThemeMode);
+	let themeMode = $state<'light' | 'dark'>(
+		untrack(() => data.initialThemeMode),
+	);
 	$effect.pre(() => {
 		document.documentElement.setAttribute('data-mode', themeMode);
 		document.cookie = `theme-mode=${themeMode}; path=/`;
 	});
 
 	let contentContainer: HTMLElement;
-	afterNavigate(() => {
+
+	afterNavigate(({ shallow }) => {
+		if (shallow) {
+			return;
+		}
+
 		setTimeout(() => {
 			contentContainer.scrollTo({ top: 0, behavior: 'smooth' });
 		}, 100);
@@ -65,7 +72,7 @@
 
 	let selected = $state<null | number>(null);
 	$effect(() => {
-		page.url;
+		void page.url;
 		selected = null;
 		selectionIndex = 0;
 	});
@@ -164,7 +171,7 @@
 		<main
 			bind:this={contentContainer}
 			use:autoAnimate={{}}
-			class="col-start-1 col-end-2 row-start-1 row-end-2 flex flex-col gap-4 overflow-auto bg-white dark:bg-black p-2 transition-colors duration-200 text-black dark:text-white"
+			class="col-start-1 col-end-2 row-start-1 row-end-2 flex flex-col gap-4 overflow-auto bg-white p-2 text-black transition-colors duration-200 dark:bg-black dark:text-white"
 		>
 			{@render children()}
 		</main>
@@ -255,7 +262,7 @@
 				</div>
 			</div>
 			<nav
-				class="flex flex-col gap-2 sm:flex-row sm:gap-4 lg:gap-12 items-start"
+				class="flex flex-col items-start gap-2 sm:flex-row sm:gap-4 lg:gap-12"
 			>
 				{#snippet internalLinkButton({
 					href,
@@ -266,7 +273,7 @@
 					label: string;
 					ariaLabel: string;
 				})}
-					<div class="flex items-center gap-2 lg:gap-4 sm:flex-col">
+					<div class="flex items-center gap-2 sm:flex-col lg:gap-4">
 						<a
 							class="button block h-4 w-8 bg-gray-600"
 							{href}
@@ -293,24 +300,24 @@
 				})}
 				<label
 					class="
-						rounded-full h-5 w-9
-						bg-surface-950
+						bg-surface-950 flex h-5
+						w-9
+						items-center rounded-full
 						inset-shadow-sm inset-shadow-black
-						flex items-center
 						{themeMode == 'light' ? 'gap-0' : 'gap-5'}
 						transition-all
 					"
 				>
 					<input
 						type="checkbox"
-						class="w-1 h-1 hidden"
+						class="hidden h-1 w-1"
 						onchange={() => {
 							themeMode = themeMode == 'light' ? 'dark' : 'light';
 						}}
 					/>
 					<div class="w-0"></div>
 					<div
-						class="rounded-full bg-white w-4 h-4 grid place-items-center text-black"
+						class="grid h-4 w-4 place-items-center rounded-full bg-white text-black"
 					>
 						{#if themeMode == 'light'}
 							<IconSun size="12" />
@@ -330,10 +337,10 @@
 					href="https://github.com/AhmadMayo"
 					target="_blank"
 					class="
-						button overflow-hidden
-						col-start-2 col-end-5 row-start-1 row-end-4
-						grid place-items-center
-						rounded-full p-1 transition ease-out bg-white
+						button col-start-2
+						col-end-5 row-start-1 row-end-4 grid
+						place-items-center overflow-hidden
+						rounded-full bg-white p-1 transition ease-out
 					"
 					ondragstart={(event) => {
 						event.preventDefault();
@@ -343,16 +350,16 @@
 						src="/static/github-8bit.png"
 						alt="github account"
 						class="h-full w-full object-cover"
-					/>
+					></enhanced:img>
 				</a>
 				<a
 					aria-label="linkedin account"
 					href="https://www.linkedin.com/in/ahmad-mayo/"
 					target="_blank"
 					class="
-						button overflow-hidden
-						col-start-1 col-end-4 row-start-2 row-end-5
-						grid place-items-center
+						button col-start-1
+						col-end-4 row-start-2 row-end-5 grid
+						place-items-center overflow-hidden
 						rounded-full bg-white p-2 transition ease-out
 					"
 					ondragstart={(event) => {
@@ -363,7 +370,7 @@
 						src="/static/linkedin-8bit.webp"
 						alt="linkedin account"
 						class="h-full w-full object-cover"
-					/>
+					></enhanced:img>
 				</a>
 			</div>
 		</footer>
@@ -373,7 +380,7 @@
 {#snippet linksMenu()}
 	<nav>
 		<ul bind:this={linksParentEl}>
-			{#each menuRoutes as { label, url }, index}
+			{#each menuRoutes as { label, url }, index (index)}
 				<li>
 					<a
 						class="
